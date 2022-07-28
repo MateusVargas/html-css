@@ -1,0 +1,142 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+}
+.area-Logo{
+    float: left;
+}
+
+body{
+    background-image: url('../img/bg_texture.png');
+    
+}
+
+header{
+    width: 100%;
+    height: 70px;
+    background: #0067dc;
+    position: fixed;
+    z-index: 1;
+}
+
+.menu{
+    margin-right: 10%;
+    float: right;
+}
+
+.menu nav{
+    margin-top: 3%;
+}
+.menu nav li{
+    padding: 15px;
+    font-size: 18px;
+    color: white;
+    text-transform: uppercase;
+    display: inline-block;
+    font-weight: bold;
+}
+.menu nav li:hover{
+    color: red;
+    border-bottom: 5px solid red;
+}
+.menu nav li a{
+    text-decoration: none;
+    color: white;
+}
+.menu .fab{
+    font-size: 20px;
+}
+
+.banner{
+    height: 430px;
+    background-image: url('../img/banner.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: contain;
+    background-position: 0 70px;
+}
+
+.main{
+    background-color: white;
+    width: 960px;
+    margin: auto;
+}
+.titulo{
+    padding: 20px;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    text-align: center;
+    padding: 30px;
+}
+/*h1{
+   
+}*/
+.history{
+    padding: 25px;
+    text-align: justify;
+}
+.history .titulo{
+    color: #000
+}
+img{
+    float: right;
+    padding: 10px;
+    width: 150px;
+    
+}
+.games{
+    background-image: url('../img/bg-red_2x.jpg');
+    background-attachment: fixed;
+    height: 600px;
+    
+}
+.games .titulo{
+    color: white;
+    padding: 30px;
+}
+.games-texto{
+    position: relative;
+    
+}
+.texto1{
+    right: 0px;
+    color: white;
+    position: absolute;
+    width: 50%;
+}
+.texto2{
+    top: 130px;
+    left: 0px;
+    color: white;
+    position: absolute;
+    width: 50%;
+}
+.texto3{
+    top: 250px;
+    right: 0px;
+    color: white;
+    position: absolute;
+    width: 50%;
+}
+.texto4{
+    top: 380px;
+    left: 0px;
+    color: white;
+    position: absolute;
+    width: 50%;
+}
+footer{
+    height: 190px;
+    margin-top: 130px;
+    background-image: url('../img/footer_bg.png');
+    background-repeat: no-repeat;
+}
+.video{
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-right: 0px;
+    margin-left: 0px;
+    
+}
