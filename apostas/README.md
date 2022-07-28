@@ -5,3 +5,4 @@ do Curso técnico em Informática, do Colégio Politécnico da UFSM,
 o projeto foi construído em 2019 e desenvolvido apenas com HTML e CSS,
 sem o uso de nenhum framework ou outras tecnologias
 
+![Alt text](.github/1.png?raw=true "print")
