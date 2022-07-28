@@ -1,0 +1,113 @@
+body { color: #000000;
+background-color: #ffffff;
+font-family: Verdana, Geneva, Arial, sans-serif; }
+
+.flex-container{
+	display: flex;
+	/* wrap força a quebra e row coloca em linha */
+	/* flex-flow - atalho para flex-direction: row; e flex-wrap: wrap; */
+	flex-flow: row wrap;
+	text-align: center;
+}
+
+.flex-container>*{
+	padding: 10px;
+	margin: 10px;
+	/* flex é um atalho para 3 propriedades: flex-grow, flex-shrink e flex-basis(define tamanho padrão)*/
+	/* estou definindo que o flex-grow = 1 - assim todos itens irão ocupar o mesmo
+	   espaço e 100% do container.
+	   Não está sendo passado o argumento para flex-shrink que pode ser 0, 1(padrão) ou
+	   um número diferente de 0 ou 1 que indica quanto irá diminiur em relação aos outros*/
+	flex: 1 100%;
+}
+
+.header
+{
+	background-color: #ff0000;
+	height: 100px;
+
+}
+
+.footer
+{
+	background-color: #0000ff;
+	height: 60px;
+
+}
+
+.main
+{
+	background-color: #cccccc;
+	height: 300px;
+	text-align: justify;
+
+	
+}
+
+.aside1{
+	background-color: #00ffff;
+}
+
+.aside2{
+	background-color: #ffff00;
+}
+
+.header{
+		order: 1;
+	}
+	
+.aside1{
+		order: 3;
+	}
+
+.aside2{
+		order: 4;
+	}
+
+.main{
+		order: 2;
+	}
+
+.footer{
+		order: 5;
+	}
+
+
+/*Aplicado se a largura é de no mínimo 600px */
+@media all and (min-width: 600px)
+{
+	.main{
+		/*main é 3X maior que outras divs*/
+		/*ordem no HTML influencia!! */
+		flex: 3;
+		background-color: #000000;
+		color: #ffffff;
+	}
+
+	.header{
+			order: 1;
+		}
+		
+	.aside1{
+			order: 2;
+		}
+
+	.aside2{
+			order: 4;
+		}
+
+	.main{
+			order: 3;
+		}
+
+	.footer{
+			order: 5;
+		}
+
+	.aside{
+		flex: 1;
+	}
+	
+}
+
+

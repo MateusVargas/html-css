@@ -1,0 +1,106 @@
+body{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: #fff;
+    font-size: 15px;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+}
+
+.container>* {
+    flex: 1 100%;
+}
+
+.container-img{
+    display: flex;
+    justify-content: center;
+    background-color: #cccccc;
+    padding: 10px;
+}
+
+.container-img img{
+    max-width: 100%;
+    height: auto;
+}
+
+.content{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.content .texto{
+    background-color: #cccccc;
+    font-size: 15px;
+    padding: 10px;
+}
+
+.content .row-imgs{
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.content .row-imgs .col{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.inscricoes{
+    background-color: #cccccc;
+    margin-top: 20px;
+    padding: 10px;
+}
+
+fieldset {
+    padding:15px;
+    border:3px solid #000;
+    margin-bottom: 10px;
+}
+  
+legend {
+    font-weight: bold;
+    color: #000;
+    font-size: 12px;
+}
+
+.inscricoes .title{
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.field{
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.field label{
+    display: inline-block;
+    width: 80px;
+}
+
+button{
+    width: 110px;
+    height: 30px;
+    color: #fff;
+    background-color: #000;
+    cursor: pointer;
+}
+
+@media(min-width: 600px) {
+    .content{
+        flex-direction: row;
+    }
+    .content .texto{
+        flex: 4;
+    }
+    .content .row-imgs{
+        margin-top: 0;
+        flex: 1;
+    }
+}

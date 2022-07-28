@@ -1,0 +1,82 @@
+body { color: #000000;
+background-color: #ffffff;
+font-family: Verdana, Geneva, Arial, sans-serif; }
+
+/*Mobile First*/
+.grid-container{
+	display: grid;
+	/*gap equivale a usar row-gap e column-gap*/
+	gap: 20px 20px;
+	grid-template-areas: 
+		'header'
+		'main'
+		'aside1'
+		'aside2'
+		'footer';
+	text-align: center;
+}
+
+.grid-container>*{
+	padding: 10px;
+	margin: 10px;
+}
+
+.header
+{
+	grid-area: header;	
+	background-color: #ff0000;
+	height: 100px;
+
+}
+
+.footer
+{
+	grid-area: footer;	
+	background-color: #0000ff;
+	height: 60px;
+
+}
+
+.main
+{
+	grid-area: main;	
+	background-color: #cccccc;
+	height: 300px;
+	text-align: justify;
+
+	
+}
+
+.aside1{
+	grid-area: aside1;	
+	background-color: #00ffff;
+}
+
+.aside2{
+	grid-area: aside2;	
+	background-color: #ffff00;
+}
+
+/*estilo que será aplicado com no mínimo 600px de largura*/
+@media all and (min-width: 600px)
+{
+	.grid-container{
+		display: grid;
+		/*gap equivale a usar row-gap e column-gap*/
+		gap: 20px 20px;
+		grid-template-areas: 
+			'header header header header header'
+			'aside1 main main main aside2'
+			'footer footer footer footer footer';
+	}
+	
+	.main {
+		background-color: #000000;
+		color: #ffffff;
+	
+	}
+
+	
+}
+
+

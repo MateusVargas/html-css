@@ -1,0 +1,153 @@
+body{
+    font-family: Verdana, Arial, sans-serif;
+    background-color: #cccccc;
+}
+
+#container{
+    margin: 0 auto;
+    padding: 0px;
+    border: none;
+    width:1100px;
+    background-color: #cccccc;
+}
+
+.header{
+    margin-top: 10px;
+    background-color: #fff;
+    text-align: center;
+}
+
+.header h1{
+    background-color: #0b0b61;
+    font-size: 36px;
+    color: #fff;
+    margin-bottom: 0;
+}
+
+.content-apresentacao{
+    padding: 10px;
+    margin-top: 10px;
+    background-color: #fff;
+}
+
+.content-apresentacao h2{
+    font-size: 16px;
+}
+
+.content-apresentacao p{
+    font-size: 14px;
+}
+
+table{
+    font-size: 14px;
+    text-align: center;
+    border: 1px solid #000;
+    margin: auto;
+}
+
+caption{
+    caption-side: bottom;
+    font-size: 12px;
+    font-style: italic;
+}
+
+th, td{
+    color: #fff;
+    padding: 15px;
+    border: 1px solid #000;
+}
+
+th{
+    width: 200px;
+    background-color: #0b0b61;
+}
+
+td{
+    background-color: #808080;
+}
+
+.content-links{
+    margin-top: 10px;
+    background-color: #fff;
+    padding: 10px;
+}
+
+.content-links ul li a{
+    font-size: 14px;
+}
+
+.content-links h2{
+    font-size: 16px;
+}
+
+.footer{
+    margin-top: 10px;
+    background-color: #0b0b61;
+    color: #fff;
+    font-size: 14px;
+    text-align: center;
+    padding: 10px;
+}
+
+
+
+/* pagina lista cursos */
+.lista-cursos{
+    padding: 10px;
+    margin-top: 10px;
+    background-color: #fff;
+}
+
+.lista-cursos h2{
+    font-size: 16px;
+}
+
+.lista-cursos ul li{
+    padding: 10px;
+    font-size: 16px;
+}
+
+.lista-cursos ul li:nth-child(odd){
+    background-color: #c0c0c0;
+}
+
+/* pagina manual academico */
+.manual-academico{
+    background-color: #fff;
+    margin-top: 10px;
+    padding: 10px;
+}
+
+.manual-academico h2{
+    font-size: 16px;
+    border-bottom: 1px solid #000;
+}
+
+.manual-academico p{
+    font-size: 12px;
+}
+
+.ingresso{
+    background-color: #fff;
+    margin-top: 10px;
+    padding: 10px;
+}
+
+.ingresso h3{
+    border-bottom: 1px solid #000;
+    font-size: 14px;
+}
+
+.ingresso p{
+    text-align: justify;
+    font-size: 12px;
+}
+
+/*estilo presente em lista-cursos e manual academico*/
+.link-voltar{
+    margin-top: 10px;
+}
+
+.link-voltar a{
+    font-weight: bold;
+}

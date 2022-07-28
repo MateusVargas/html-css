@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            display: flex;
+            flex-flow: row wrap;
+        }
+        .container>*{
+            flex: 1 100%;
+        }
+        .header{
+            background-color: red;
+            padding: 30px;
+        }
+        .menu{
+            background-color: blueviolet;
+            margin-top: 10px;
+            padding: 15px;
+        }
+        .row{
+            display: flex;
+            flex-direction: column;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        .left-box{
+            background-color: black;
+            height: 300px;
+        }
+        .rigth-box{
+            background-color: aqua;
+            height: 300px;
+        }
+        footer{
+            background-color: blue;
+            padding: 20px;
+        }
+        @media(min-width: 600px){
+            .row{
+                flex-direction: row;
+            }
+            .left-box{
+                flex: 3;
+            }
+            .rigth-box{                
+                margin-left: 10px;
+                flex: 1;
+            }
+        }
+        @media(max-width: 599px){
+            .rigth-box{
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+            <div class="header">
+                <h1>cabeçalho</h1>
+            </div>
+
+            <div class="menu">
+                <p>menu</p>
+            </div>
+
+            <div class="row">
+                <div class="left-box">
+                    <p>lorem</p>
+                </div>
+
+                <div class="rigth-box">
+                    <p>aside</p>
+                </div>
+            </div>
+            <footer>
+                <p>footer</p>
+            </footer>
+    </div>
+</body>
+</html>

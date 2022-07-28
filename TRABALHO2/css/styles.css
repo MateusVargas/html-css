@@ -1,0 +1,166 @@
+body{
+	color: #000000; 
+	background-color: #cccccc; 
+	font-family:Verdana, Geneva, Arial, sans-serif; 
+	text-align: justify;
+}
+
+.container{
+	margin: 0 auto;
+	padding: 0px;
+	border: 0;
+	width:960px;
+	font-size: 12px;
+	background-color: #cccccc;
+}
+
+.header{
+	width:960px;
+	height:130px;
+	font-weight: bold;
+	background-color:#ffcc00;
+	position: relative;
+}
+
+.header h1{
+	font-size: 36px;
+	color: #fff;
+	text-align: center;
+	position: relative;
+	top: 35px;
+}
+
+.header p{
+	color: #ffffcc;
+	font-weight: bold;
+	font-size: 12px;
+}
+
+.header .gastronomia{
+	position: absolute;
+    top: 10px;
+    left: 30px;
+}
+
+.header .musica{
+	position: absolute;
+    top: 55px;
+    left: 5px;
+}
+
+.header .cinema{
+	position: absolute;
+    bottom: 20px;
+    left: 30px;
+}
+
+.header .festas{
+	position: absolute;
+    top: 10px;
+    right: 30px;
+}
+
+.header .exposicoes{
+	position: absolute;
+    top: 55px;
+    right: 45px;
+}
+
+.header .teatro{
+	position: absolute;
+    bottom: 20px;
+    right: 30px;
+}
+
+.destaques{
+	font-size: 18px;
+    background-color: #708090;
+    padding: 5px;
+    margin-top: 15px;
+    color: #fff;
+    text-align: center;
+}
+
+.card{
+	padding: 10px;
+	background-color: #ffffff;
+	width:230px;
+	height: 230px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	float: left;
+}
+
+.card .titulo{
+	font-size: 16px;
+	font-weight: bold;
+	color: #000000;
+	margin-bottom: 5px;
+}
+
+.card .subtitulo{
+	font-size: 12px;
+	font-weight: bold;
+	color: #666666;
+	margin-bottom: 5px;
+}
+
+.card img{
+	float: left;
+	margin-right: 5px;
+	margin-bottom: 5px;
+}
+
+.card p{
+	text-align: left;
+	color: #000;
+	font-size: 12px;
+}
+
+.card p a{
+	font-style: italic;
+}
+
+.card-left{
+	margin-right: 105px;
+}
+
+.footer{
+	clear: both;
+	font-size: 14px;
+    background-color: #708090;
+    padding: 5px;
+    margin-top: 15px;
+    color: #fff;
+    text-align: center;
+}
+
+/* estilos evento.html*/
+.evento{
+	border: #708090 solid 5px;
+	padding: 10px;
+	width: 930px;
+	background-color: #ffffff;
+	height: 130px;
+	margin-top: 10px;
+}
+
+.evento h2{
+	font-size: 16px;
+}
+
+.evento .links p{
+	font-size: 12px;
+}
+
+.evento h2, .evento .links p{
+	margin-bottom: 10px;
+}
+
+.evento .links{
+	margin-left: 10px;
+}
+
+.link-voltar{
+	margin-top: 15px;
+}

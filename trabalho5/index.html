@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/styles.css">
+    <title>Trabalho</title>
+</head>
+<body onload="calc()">
+    <main class="container">
+        <div class="container-img">
+            <img src="./imagens/sainfbanner.png" alt="banner">
+        </div>
+
+        <div class="content">
+            <div class="texto">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi amet sequi quas, sed suscipit iusto 
+                consequatur officia est corrupti voluptates maiores numquam facilis architecto voluptatum repellendus 
+                natus necessitatibus, nobis optio
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi amet sequi quas, sed suscipit iusto 
+                consequatur officia est corrupti voluptates maiores numquam facilis architecto voluptatum repellendus 
+                natus necessitatibus, nobis optio.
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi amet sequi quas, sed suscipit iusto 
+                consequatur officia est corrupti voluptates maiores numquam facilis architecto voluptatum repellendus 
+                natus necessitatibus, nobis optio.</p>           
+            </div>
+                
+            <div class="row-imgs">
+                <div class="col">
+                    <img src="./imagens/patrocinador1.png" alt="patrocinador1">
+                    <img src="./imagens/patrocinador2.png" alt="patrocinador2">
+                </div>
+                
+                <div class="col">
+                    <img src="./imagens/patrocinador3.png" alt="patrocinador3">
+                    <img src="./imagens/patrocinador4.png" alt="patrocinador4">
+                </div>
+            </div>
+        </div>
+
+        <div class="inscricoes">
+            <div class="row">
+                <div class="col">
+                    <form>
+                        <div class="title">
+                            <h2>Inscrição</h2>
+                        </div>
+
+                        <fieldset>
+                            <legend>Dados do Comprador</legend>
+                            <div class="field">
+                                <label for="nome" class="form-label">Nome:</label>
+                                <input type="text" class="form-control" id="nome" placeholder="Nome">
+                            </div>
+                            <div class="field">
+                                <label for="matricula" class="form-label">Senha:</label>
+                                <input type="number" class="form-control" id="matricula" placeholder="Matrícula">
+                            </div>
+                            <div class="field">
+                                <label for="email" class="form-label">Email:</label>
+                                <input type="email" class="form-control" id="email" placeholder="Email">
+                            </div>
+                            <div class="field">
+                                <label class="form-label">Curso:</label>
+                                <select name="curso" id="curso-select">
+                                    <option value="si" selected>Sistemas para Internet</option>
+                                </select>
+                            </div>
+                        </fieldset>
+
+                        <fieldset>
+                            <legend>Escolha o Combo</legend>
+                            <div class="field">
+                                <label class="form-label">Combo:</label>
+                                <select name="combo" id="combo-select" onchange="calc()">
+                                    <option value="inscricao" selected>Inscrição</option>
+                                    <option value="inscricao_copo">Inscrição+Copo</option>
+                                    <option value="inscricao_camiseta">Inscrição+Camiseta</option>
+                                    <option value="inscricao_camiseta_copo">Inscrição+Camiseta+Copo</option>
+                                </select>
+                            </div>
+                        </fieldset>
+                        
+                        <fieldset>
+                            <legend>Total da inscrição + combo</legend>
+                            <div class="field">
+                                <label for="total" class="form-label">Total:</label>
+                                <input type="number" class="form-control" id="total" readonly>
+                            </div>
+                        </fieldset>
+
+                        <button type="submit" class="btn btn-primary">Confirma!</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    
+    <script src="./js/script.js"></script>
+</body>
+</html>
