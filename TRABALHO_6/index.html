@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;700&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body onload="listarProdutos()">
+    <div class="container">
+        <header>
+            <nav>
+                <ul class="menu">
+                    <li class="logo">
+                        <img class="img" src="./imagens/logo.png" alt="logo">
+                    </li>
+                    <li class="item"><a href="index.html">Home</a></li>
+                    <li class="item has-submenu">
+                        <a tabindex="0">Produtos<i class="arrow"></i>
+                        </a>
+                        <ul class="submenu">
+                            <li class="subitem"><a href="#row-produtos">Ver produtos</a></li>
+                            <li class="subitem"><a href="secoes/pedido.html">Fazer pedido</a></li>
+                        </ul>
+                    </li>
+                    <li class="item"><a href="#about">Sobre</a></li>
+                    <li class="item"><a href="#footer">Contato</a></li>
+                    <li class="toggle">
+                        <a href="#">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <div class="row init">
+                <div class="promo">
+                    <h1>Faça seu pedido agora mesmo e entregamos pra na sua casa!</h1>
+                    <img src="./imagens/hamburguer-grande.png" alt="hamburguer">
+                </div>
+                <div class="local">
+                    <img src="./imagens/map-marker.png" alt="marker">
+                    <h2>Nossa Localização</h2>
+                    <div class="mapa">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13860.460230759843!2d-53.71490034328087!3d-29.716426239450946!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9503b5e734a7c815%3A0x82b3f9bdf92727ec!2sUniversidade%20Federal%20de%20Santa%20Maria%20-%20UFSM!5e0!3m2!1spt-BR!2sbr!4v1659652135573!5m2!1spt-BR!2sbr" width="100%" height="400" style="overflow: hidden;border-radius: 10px;border: 3px solid black;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row about" id="about">
+                <div class="imagem">
+                    <img src="./imagens/about-icon.png" alt="sobre">
+                </div>
+                <div class="texto">
+                    <h2>Sobre nós</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+                    Veritatis fugit magnam, similique repudiandae laboriosam vel 
+                    iste harum beatae, fugiat quidem, incidunt deserunt eius excepturi quae 
+                    consectetur recusandae saepe esse consequuntur?
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+                    Veritatis fugit magnam, similique repudiandae laboriosam vel 
+                    iste harum beatae, fugiat quidem, incidunt deserunt eius excepturi quae 
+                    consectetur recusandae saepe esse consequuntur?</p>
+                </div>
+            </div>
+
+            <div class="row div-procurar">
+                <h2>Procurar:</h2>
+                <input 
+                    type="search" 
+                    name="procurar" 
+                    id="procurar" 
+                    placeholder="Digite o nome do produto..."
+                    oninput="filtrarProdutos(this)"
+                >
+            </div>
+
+            <div id="row-produtos">
+                <div class="load" id="load">
+                    <p>Carregando produtos</p>
+                    <img src="./imagens/gif.gif" alt="carregando">
+                </div>
+            </div>
+
+            <div class="row message" id="msg">
+                <p>Nenhum produto encontrado.</p>
+            </div>
+        </main>
+
+        <footer id="footer">
+            <div class="footer-top">
+                <p>Nos acompanhe nas nossas redes sociais:</p>
+                <div>
+                    <img src="./imagens/instagram.png" alt="instagram">
+                    <img src="./imagens/facebook.png" alt="facebook">
+                    <img src="./imagens/twitter.png" alt="twitter">
+                </div>
+            </div>
+
+            <div class="footer-body">
+                <div class="endereco">
+                    <p>Av. Roraima nº 1000</p>
+                    <p>Cidade Universitária Bairro Camobi</p>
+                    <p>Santa Maria - RS</p>
+                    <p>+55 (55) 3220-8000</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; Todos os direitos reservados 2022</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
