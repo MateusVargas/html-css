@@ -1,0 +1,721 @@
+<!--
+    ideia é esconder e mostrar elementos com base em classes com display none e display block
+    pra ordenar é um bubblesort usando o metodo do js insertBefore() pra trocar as posicoes
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul, #myUL {
+          list-style-type: none;
+        }
+        
+        #myUL {
+          margin: 0;
+          padding: 0;
+        }
+        
+        .caret {
+          cursor: pointer;
+          -webkit-user-select: none; /* Safari 3.1+ */
+          -moz-user-select: none; /* Firefox 2+ */
+          -ms-user-select: none; /* IE 10+ */
+          user-select: none;
+        }
+        
+        /* .caret::before {
+          content: "\25B6";
+          color: black;
+          display: inline-block;
+          margin-right: 6px;
+        }
+        
+        .caret-down::before {
+          -ms-transform: rotate(90deg);
+          -webkit-transform: rotate(90deg); 
+          transform: rotate(90deg);  
+        } */
+        
+        .nested {
+          display: none;
+        }
+        
+        .active {
+          display: block;
+        }
+
+
+
+
+        table, th, td {
+  border: 1px solid black;
+}
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+            box-sizing: border-box
+}
+
+table, th, td {
+            border: 1px solid #e5e5e5;
+        }
+
+th {
+    padding: 15px;
+            color: #fff;
+            background-color: #145a83;
+}
+
+td {
+    padding: 10px
+}
+
+
+.text-right{
+    text-align: right;
+}
+.text-bold{
+    font-weight: bold;
+}
+
+
+
+
+        /* .table {
+            display: table;
+            width: 100%;
+            border-collapse: collapse;
+            box-sizing: border-box;
+            text-indent: initial;
+            border-spacing: 2px;
+        }
+
+        .table, .th, .td {
+            border: 1px solid #e5e5e5;
+        }
+
+        .th {
+            display: table-cell;
+            vertical-align: inherit;
+            font-weight: bold;
+            padding: 15px;
+            color: #fff;
+            background-color: #145a83;
+        }
+
+        .td{
+            display: table-cell;
+            padding: 10px;
+        }
+
+        .table-body{
+            display: table-row-group;
+            vertical-align: middle;
+            border-color: inherit;
+        }
+
+        .row{
+            display: table-row;
+            vertical-align: inherit;
+            border-color: inherit;
+        } */
+
+
+
+
+        section {
+  display: table;
+  width: 100%;
+}
+
+section > * {
+  display: table-row;
+}
+
+section .col {
+  display: table-cell;
+}
+
+
+
+
+
+.table-container {
+  display: block;
+  margin: 2em auto;
+  width: 100%;
+}
+.flex-table {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.flex-row {
+  width: 7%;
+  padding: 0.5em 0.5em;
+  border: 1px solid #e5e5e5;
+}
+.first{
+    width: 20%;
+}
+#minimal{
+    background-image: none;
+    background-position: calc(100% - 50px) calc(1em + 24px), calc(100% - 45px) calc(2em + 8px), calc(1em + 5px);
+    background-size: 5px 5px, 5px 5px, 1px 1.5em;
+    background-repeat: no-repeat;
+}
+.header > .flex-row{
+    text-align: center;
+    /* padding: 15px; */
+            color: #fff;
+            background-color: #145a83;
+/* margin: 0.5px; */
+}
+
+
+@media screen and (max-width: 700px){
+    .flex-table .flex-row:nth-last-child(-n+5){
+        display: none;
+    }
+    .flex-row{
+        width: 10%;
+    }
+    .first{
+        width: 30%;
+    }
+}
+    </style>
+</head>
+<body>
+    <div class="table-container" role="table" aria-label="Destinations">
+        <div class="flex-table header" role="rowgroup">
+            <div class="flex-row first" role="columnheader">Unidade</div>
+            <div class="flex-row" id="minimal" role="columnheader" onclick="sortPorNota()">Nota</div>
+            <div class="flex-row" role="columnheader">Disciplinas</div>
+            <div class="flex-row" role="columnheader">Docentes</div>
+            <div class="flex-row" role="columnheader">Disciplinas Notas < 7</div>
+            <div class="flex-row" role="columnheader">Disciplinas Notas > 9</div>
+            <div class="flex-row" role="columnheader">Alunos</div>
+            <div class="flex-row" role="columnheader">Participantes</div>
+            <div class="flex-row" role="columnheader">Participação</div>
+        </div>
+        
+        <div class="departamento">
+            <div class="flex-table row caret" role="rowgroup">
+                <div class="flex-row first text-bold" role="cell"><span class="flag-icon flag-icon-gb"></span>Depto zootecnia</div>
+                <div class="flex-row text-bold text-right nota-depto" role="cell">8.00</div>
+                <div class="flex-row text-bold text-right" role="cell">26</div>
+                <div class="flex-row text-bold text-right" role="cell">10</div>
+                <div class="flex-row text-bold text-right" role="cell">2</div>
+                <div class="flex-row text-bold text-right" role="cell">2</div>
+                <div class="flex-row text-bold text-right" role="cell">140</div>
+                <div class="flex-row text-bold text-right" role="cell">93</div>
+                <div class="flex-row text-bold text-right" role="cell">60%</div>
+            </div>
+
+            <div class="nested">
+                <div class="professores">
+                    <div class="flex-table row caret" role="rowgroup">
+                        <div class="flex-row first text-bold"  role="cell"><span style="margin-left: 20px;" class="flag-icon flag-icon-ca">silvio</span></div>
+                        <div class="flex-row text-bold text-right nota-professor" role="cell">6</div>
+                        <div class="flex-row text-bold text-right" role="cell">6</div>
+                        <div class="flex-row text-bold text-right" role="cell">8</div>
+                        <div class="flex-row text-bold text-right" role="cell">6</div>
+                        <div class="flex-row text-bold text-right" role="cell">9</div>
+                        <div class="flex-row text-bold text-right" role="cell">3</div>
+                        <div class="flex-row text-bold text-right" role="cell">6</div>
+                        <div class="flex-row text-bold text-right" role="cell">2</div>
+                    </div>
+                    <div class="nested disciplinas">
+                        <div class="flex-table row" role="rowgroup">
+                            <div class="flex-row first"  role="cell"><span style="margin-left: 40px;" class="flag-icon flag-icon-ca">desenho</span></div>
+                            <div class="flex-row text-right nota-disciplina" role="cell">2</div>
+                            <div class="flex-row text-right" role="cell">6</div>
+                            <div class="flex-row text-right" role="cell">8</div>
+                            <div class="flex-row text-right" role="cell">6</div>
+                            <div class="flex-row text-right" role="cell">9</div>
+                            <div class="flex-row text-right" role="cell">3</div>
+                            <div class="flex-row text-right" role="cell">6</div>
+                            <div class="flex-row text-right" role="cell">2</div>
+                        </div>
+                        <div class="flex-table row" role="rowgroup">
+                            <div class="flex-row first"  role="cell"><span style="margin-left: 40px;" class="flag-icon flag-icon-ca">algoritmo</span></div>
+                            <div class="flex-row text-right nota-disciplina" role="cell">9</div>
+                            <div class="flex-row text-right" role="cell">6</div>
+                            <div class="flex-row text-right" role="cell">8</div>
+                            <div class="flex-row text-right" role="cell">6</div>
+                            <div class="flex-row text-right" role="cell">9</div>
+                            <div class="flex-row text-right" role="cell">3</div>
+                            <div class="flex-row text-right" role="cell">6</div>
+                            <div class="flex-row text-right" role="cell">2</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="professores">
+                    <div class="flex-table row caret" role="rowgroup">
+                        <div class="flex-row first text-bold"  role="cell"><span style="margin-left: 20px;" class="flag-icon flag-icon-ca">maria</span></div>
+                        <div class="flex-row text-bold text-right nota-professor" role="cell">2</div>
+                        <div class="flex-row text-bold text-right" role="cell">6</div>
+                        <div class="flex-row text-bold text-right" role="cell">8</div>
+                        <div class="flex-row text-bold text-right" role="cell">6</div>
+                        <div class="flex-row text-bold text-right" role="cell">9</div>
+                        <div class="flex-row text-bold text-right" role="cell">3</div>
+                        <div class="flex-row text-bold text-right" role="cell">6</div>
+                        <div class="flex-row text-bold text-right" role="cell">2</div>
+                    </div>
+                    <div class="nested disciplinas">
+                        <div class="flex-table row" role="rowgroup">
+                            <div class="flex-row first"  role="cell"><span style="margin-left: 40px;" class="flag-icon flag-icon-ca">calculo</span></div>
+                            <div class="flex-row text-right nota-disciplina" role="cell">6</div>
+                            <div class="flex-row text-right" role="cell">6</div>
+                            <div class="flex-row text-right" role="cell">8</div>
+                            <div class="flex-row text-right" role="cell">6</div>
+                            <div class="flex-row text-right" role="cell">9</div>
+                            <div class="flex-row text-right" role="cell">3</div>
+                            <div class="flex-row text-right" role="cell">6</div>
+                            <div class="flex-row text-right" role="cell">2</div>
+                        </div>
+                        <div class="flex-table row" role="rowgroup">
+                            <div class="flex-row first"  role="cell"><span style="margin-left: 40px;" class="flag-icon flag-icon-ca">comunicacao</span></div>
+                            <div class="flex-row text-right nota-disciplina" role="cell">1</div>
+                            <div class="flex-row text-right" role="cell">6</div>
+                            <div class="flex-row text-right" role="cell">8</div>
+                            <div class="flex-row text-right" role="cell">6</div>
+                            <div class="flex-row text-right" role="cell">9</div>
+                            <div class="flex-row text-right" role="cell">3</div>
+                            <div class="flex-row text-right" role="cell">6</div>
+                            <div class="flex-row text-right" role="cell">2</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="professores">
+                    <div class="flex-table row caret" role="rowgroup">
+                        <div class="flex-row first text-bold"  role="cell"><span style="margin-left: 20px;" class="flag-icon flag-icon-ca">tiago</span></div>
+                        <div class="flex-row text-bold text-right nota-professor" role="cell">8</div>
+                        <div class="flex-row text-bold text-right" role="cell">6</div>
+                        <div class="flex-row text-bold text-right" role="cell">8</div>
+                        <div class="flex-row text-bold text-right" role="cell">6</div>
+                        <div class="flex-row text-bold text-right" role="cell">9</div>
+                        <div class="flex-row text-bold text-right" role="cell">3</div>
+                        <div class="flex-row text-bold text-right" role="cell">6</div>
+                        <div class="flex-row text-bold text-right" role="cell">2</div>
+                    </div>
+                    <div class="nested disciplinas">
+                        <div class="flex-table row" role="rowgroup">
+                            <div class="flex-row first"  role="cell"><span style="margin-left: 40px;" class="flag-icon flag-icon-ca">poo</span></div>
+                            <div class="flex-row text-right nota-disciplina" role="cell">7</div>
+                            <div class="flex-row text-right" role="cell">6</div>
+                            <div class="flex-row text-right" role="cell">8</div>
+                            <div class="flex-row text-right" role="cell">6</div>
+                            <div class="flex-row text-right" role="cell">9</div>
+                            <div class="flex-row text-right" role="cell">3</div>
+                            <div class="flex-row text-right" role="cell">6</div>
+                            <div class="flex-row text-right" role="cell">2</div>
+                        </div>
+                        <div class="flex-table row" role="rowgroup">
+                            <div class="flex-row first"  role="cell"><span style="margin-left: 40px;" class="flag-icon flag-icon-ca">arquitetura</span></div>
+                            <div class="flex-row text-right nota-disciplina" role="cell">10</div>
+                            <div class="flex-row text-right" role="cell">6</div>
+                            <div class="flex-row text-right" role="cell">8</div>
+                            <div class="flex-row text-right" role="cell">7</div>
+                            <div class="flex-row text-right" role="cell">3</div>
+                            <div class="flex-row text-right" role="cell">3</div>
+                            <div class="flex-row text-right" role="cell">5</div>
+                            <div class="flex-row text-right" role="cell">4</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="departamento">
+            <div class="flex-table row caret" role="rowgroup">
+                <div class="flex-row first text-bold" role="cell"><span class="flag-icon flag-icon-gb"></span>Depto Arquivologia</div>
+                <div class="flex-row text-bold text-right nota-depto" role="cell">4</div>
+                <div class="flex-row text-bold text-right" role="cell">6</div>
+                <div class="flex-row text-bold text-right" role="cell">8</div>
+                <div class="flex-row text-bold text-right" role="cell">6</div>
+                <div class="flex-row text-bold text-right" role="cell">9</div>
+                <div class="flex-row text-bold text-right" role="cell">3</div>
+                <div class="flex-row text-bold text-right" role="cell">6</div>
+                <div class="flex-row text-bold text-right" role="cell">2</div>
+            </div>
+
+            <div class="nested">
+                <div class="professores">
+                    <div class="flex-table row caret" role="rowgroup">
+                        <div class="flex-row first text-bold"  role="cell"><span style="margin-left: 20px;" class="flag-icon flag-icon-ca">alceu</span></div>
+                        <div class="flex-row text-bold text-right nota-professor" role="cell">10</div>
+                        <div class="flex-row text-bold text-right" role="cell">6</div>
+                        <div class="flex-row text-bold text-right" role="cell">8</div>
+                        <div class="flex-row text-bold text-right" role="cell">6</div>
+                        <div class="flex-row text-bold text-right" role="cell">9</div>
+                        <div class="flex-row text-bold text-right" role="cell">3</div>
+                        <div class="flex-row text-bold text-right" role="cell">6</div>
+                        <div class="flex-row text-bold text-right" role="cell">2</div>
+                    </div>
+                    <div class="nested disciplinas">
+                        <div class="flex-table row" role="rowgroup">
+                            <div class="flex-row first"  role="cell"><span style="margin-left: 40px;" class="flag-icon flag-icon-ca">poo 2</span></div>
+                            <div class="flex-row text-right nota-disciplina" role="cell">3</div>
+                            <div class="flex-row text-right" role="cell">6</div>
+                            <div class="flex-row text-right" role="cell">8</div>
+                            <div class="flex-row text-right" role="cell">6</div>
+                            <div class="flex-row text-right" role="cell">9</div>
+                            <div class="flex-row text-right" role="cell">3</div>
+                            <div class="flex-row text-right" role="cell">6</div>
+                            <div class="flex-row text-right" role="cell">2</div>
+                        </div>
+                        <div class="flex-table row" role="rowgroup">
+                            <div class="flex-row first"  role="cell"><span style="margin-left: 40px;" class="flag-icon flag-icon-ca">algebra</span></div>
+                            <div class="flex-row text-right nota-disciplina" role="cell">10</div>
+                            <div class="flex-row text-right" role="cell">6</div>
+                            <div class="flex-row text-right" role="cell">8</div>
+                            <div class="flex-row text-right" role="cell">6</div>
+                            <div class="flex-row text-right" role="cell">9</div>
+                            <div class="flex-row text-right" role="cell">3</div>
+                            <div class="flex-row text-right" role="cell">6</div>
+                            <div class="flex-row text-right" role="cell">2</div>
+                        </div>
+                        <div class="flex-table row" role="rowgroup">
+                            <div class="flex-row first"  role="cell"><span style="margin-left: 40px;" class="flag-icon flag-icon-ca">robotica</span></div>
+                            <div class="flex-row text-right nota-disciplina" role="cell">5</div>
+                            <div class="flex-row text-right" role="cell">6</div>
+                            <div class="flex-row text-right" role="cell">8</div>
+                            <div class="flex-row text-right" role="cell">6</div>
+                            <div class="flex-row text-right" role="cell">9</div>
+                            <div class="flex-row text-right" role="cell">3</div>
+                            <div class="flex-row text-right" role="cell">6</div>
+                            <div class="flex-row text-right" role="cell">2</div>
+                        </div>
+                        <div class="flex-table row" role="rowgroup">
+                            <div class="flex-row first" role="cell"><span style="margin-left: 40px;" class="flag-icon flag-icon-ca">mecanica</span></div>
+                            <div class="flex-row text-right nota-disciplina" role="cell">9</div>
+                            <div class="flex-row text-right" role="cell">6</div>
+                            <div class="flex-row text-right" role="cell">8</div>
+                            <div class="flex-row text-right" role="cell">6</div>
+                            <div class="flex-row text-right" role="cell">9</div>
+                            <div class="flex-row text-right" role="cell">3</div>
+                            <div class="flex-row text-right" role="cell">6</div>
+                            <div class="flex-row text-right" role="cell">2</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="professores">
+                    <div class="flex-table row caret" role="rowgroup">
+                        <div class="flex-row first text-bold"  role="cell"><span style="margin-left: 20px;" class="flag-icon flag-icon-ca">marcio</span></div>
+                        <div class="flex-row text-bold text-right nota-professor" role="cell">8</div>
+                        <div class="flex-row text-bold text-right" role="cell">6</div>
+                        <div class="flex-row text-bold text-right" role="cell">8</div>
+                        <div class="flex-row text-bold text-right" role="cell">6</div>
+                        <div class="flex-row text-bold text-right" role="cell">9</div>
+                        <div class="flex-row text-bold text-right" role="cell">3</div>
+                        <div class="flex-row text-bold text-right" role="cell">6</div>
+                        <div class="flex-row text-bold text-right" role="cell">2</div>
+                    </div>
+                    <div class="nested disciplinas">
+                        <div class="flex-table row" role="rowgroup">
+                            <div class="flex-row first"  role="cell"><span style="margin-left: 40px;" class="flag-icon flag-icon-ca">hidraulica</span></div>
+                            <div class="flex-row text-right nota-disciplina" role="cell">4</div>
+                            <div class="flex-row text-right" role="cell">6</div>
+                            <div class="flex-row text-right" role="cell">8</div>
+                            <div class="flex-row text-right" role="cell">6</div>
+                            <div class="flex-row text-right" role="cell">9</div>
+                            <div class="flex-row text-right" role="cell">3</div>
+                            <div class="flex-row text-right" role="cell">6</div>
+                            <div class="flex-row text-right" role="cell">2</div>
+                        </div>
+                        <div class="flex-table row" role="rowgroup">
+                            <div class="flex-row first"  role="cell"><span style="margin-left: 40px;" class="flag-icon flag-icon-ca">eletronica 1</span></div>
+                            <div class="flex-row text-right nota-disciplina" role="cell">5</div>
+                            <div class="flex-row text-right" role="cell">6</div>
+                            <div class="flex-row text-right" role="cell">8</div>
+                            <div class="flex-row text-right" role="cell">6</div>
+                            <div class="flex-row text-right" role="cell">9</div>
+                            <div class="flex-row text-right" role="cell">3</div>
+                            <div class="flex-row text-right" role="cell">6</div>
+                            <div class="flex-row text-right" role="cell">2</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="departamento">
+            <div class="flex-table row caret" role="rowgroup">
+                <div class="flex-row first text-bold" role="cell"><span class="flag-icon flag-icon-gb"></span>Depto teste</div>
+                <div class="flex-row text-bold text-right nota-depto" role="cell">2</div>
+                <div class="flex-row text-bold text-right" role="cell">2</div>
+                <div class="flex-row text-bold text-right" role="cell">8</div>
+                <div class="flex-row text-bold text-right" role="cell">6</div>
+                <div class="flex-row text-bold text-right" role="cell">9</div>
+                <div class="flex-row text-bold text-right" role="cell">3</div>
+                <div class="flex-row text-bold text-right" role="cell">6</div>
+                <div class="flex-row text-bold text-right" role="cell">2</div>
+            </div>
+
+            <div class="nested">
+                <div class="professores">
+                    <div class="flex-table row caret" role="rowgroup">
+                        <div class="flex-row first text-bold"  role="cell"><span style="margin-left: 20px;" class="flag-icon flag-icon-ca">joao</span></div>
+                        <div class="flex-row text-bold text-right nota-professor" role="cell">6</div>
+                        <div class="flex-row text-bold text-right" role="cell">6</div>
+                        <div class="flex-row text-bold text-right" role="cell">8</div>
+                        <div class="flex-row text-bold text-right" role="cell">6</div>
+                        <div class="flex-row text-bold text-right" role="cell">9</div>
+                        <div class="flex-row text-bold text-right" role="cell">3</div>
+                        <div class="flex-row text-bold text-right" role="cell">6</div>
+                        <div class="flex-row text-bold text-right" role="cell">2</div>
+                    </div>
+                    <div class="nested disciplinas">
+                        <div class="flex-table row" role="rowgroup">
+                            <div class="flex-row first"  role="cell"><span style="margin-left: 40px;" class="flag-icon flag-icon-ca">gestao</span></div>
+                            <div class="flex-row text-right nota-disciplina" role="cell">7</div>
+                            <div class="flex-row text-right" role="cell">6</div>
+                            <div class="flex-row text-right" role="cell">8</div>
+                            <div class="flex-row text-right" role="cell">6</div>
+                            <div class="flex-row text-right" role="cell">9</div>
+                            <div class="flex-row text-right" role="cell">3</div>
+                            <div class="flex-row text-right" role="cell">6</div>
+                            <div class="flex-row text-right" role="cell">2</div>
+                        </div>
+                        <div class="flex-table row" role="rowgroup">
+                            <div class="flex-row first"  role="cell"><span style="margin-left: 40px;" class="flag-icon flag-icon-ca">agronegocio</span></div>
+                            <div class="flex-row text-right nota-disciplina" role="cell">5</div>
+                            <div class="flex-row text-right" role="cell">6</div>
+                            <div class="flex-row text-right" role="cell">8</div>
+                            <div class="flex-row text-right" role="cell">6</div>
+                            <div class="flex-row text-right" role="cell">9</div>
+                            <div class="flex-row text-right" role="cell">3</div>
+                            <div class="flex-row text-right" role="cell">6</div>
+                            <div class="flex-row text-right" role="cell">2</div>
+                        </div>
+                        <div class="flex-table row" role="rowgroup">
+                            <div class="flex-row first"  role="cell"><span style="margin-left: 40px;" class="flag-icon flag-icon-ca">teatro</span></div>
+                            <div class="flex-row text-right nota-disciplina" role="cell">3</div>
+                            <div class="flex-row text-right" role="cell">6</div>
+                            <div class="flex-row text-right" role="cell">8</div>
+                            <div class="flex-row text-right" role="cell">6</div>
+                            <div class="flex-row text-right" role="cell">9</div>
+                            <div class="flex-row text-right" role="cell">3</div>
+                            <div class="flex-row text-right" role="cell">6</div>
+                            <div class="flex-row text-right" role="cell">2</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="professores">
+                    <div class="flex-table row caret" role="rowgroup">
+                        <div class="flex-row first text-bold"  role="cell"><span style="margin-left: 20px;" class="flag-icon flag-icon-ca">marta</span></div>
+                        <div class="flex-row text-bold text-right nota-professor" role="cell">8</div>
+                        <div class="flex-row text-bold text-right" role="cell">6</div>
+                        <div class="flex-row text-bold text-right" role="cell">8</div>
+                        <div class="flex-row text-bold text-right" role="cell">6</div>
+                        <div class="flex-row text-bold text-right" role="cell">9</div>
+                        <div class="flex-row text-bold text-right" role="cell">3</div>
+                        <div class="flex-row text-bold text-right" role="cell">6</div>
+                        <div class="flex-row text-bold text-right" role="cell">2</div>
+                    </div>
+                    <div class="nested disciplinas">
+                        <div class="flex-table row" role="rowgroup">
+                            <div class="flex-row first"  role="cell"><span style="margin-left: 40px;" class="flag-icon flag-icon-ca">biologia</span></div>
+                            <div class="flex-row text-right nota-disciplina" role="cell">6</div>
+                            <div class="flex-row text-right" role="cell">6</div>
+                            <div class="flex-row text-right" role="cell">8</div>
+                            <div class="flex-row text-right" role="cell">6</div>
+                            <div class="flex-row text-right" role="cell">9</div>
+                            <div class="flex-row text-right" role="cell">3</div>
+                            <div class="flex-row text-right" role="cell">6</div>
+                            <div class="flex-row text-right" role="cell">2</div>
+                        </div>
+                        <div class="flex-table row" role="rowgroup">
+                            <div class="flex-row first"  role="cell"><span style="margin-left: 40px;" class="flag-icon flag-icon-ca">física</span></div>
+                            <div class="flex-row text-right nota-disciplina" role="cell">8</div>
+                            <div class="flex-row text-right" role="cell">6</div>
+                            <div class="flex-row text-right" role="cell">8</div>
+                            <div class="flex-row text-right" role="cell">6</div>
+                            <div class="flex-row text-right" role="cell">9</div>
+                            <div class="flex-row text-right" role="cell">3</div>
+                            <div class="flex-row text-right" role="cell">6</div>
+                            <div class="flex-row text-right" role="cell">2</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <h2>Tree View</h2>
+    <p>A tree view represents a hierarchical view of information, where each item can have a number of subitems.</p>
+    <p>Click on the arrow(s) to open or close the tree branches.</p>
+
+    <ul id="myUL">
+        <li>
+            <span class="caret">Beverages</span>
+            <ul class="nested">
+                <li>Water</li>
+                <li>Coffee</li>
+                <li><span class="caret">Tea</span>
+                    <ul class="nested">
+                        <li>Black Tea</li>
+                        <li>White Tea</li>
+                        <li><span class="caret">Green Tea</span>
+                            <ul class="nested">
+                                <li>Sencha</li>
+                                <li>Gyokuro</li>
+                                <li>Matcha</li>
+                                <li>Pi Lo Chun</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>  
+            </ul>
+        </li>
+    </ul>    
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+
+    <script>
+        // $(".caret").each(function() {
+        //     $(this).click(function () {
+        //         $(this).parent().children('.nested').toggleClass("active")
+        //         $(this).toggleClass("caret-down");
+        //     });
+        // });
+        var toggler = document.getElementsByClassName("caret");
+        var i;
+
+        for (i = 0; i < toggler.length; i++) {
+        toggler[i].addEventListener("click", function() {
+            this.parentElement.querySelector(".nested").classList.toggle("active");
+            this.classList.toggle("caret-down");
+        });
+        }
+    </script>
+
+    <script>
+        let ordem = 3;
+
+
+        // function openProfs(id){
+            
+        //     let d = document.getElementsByClassName(`prof-${id}`)
+        //     console.log(d)
+        //     for(let i=0;i<d.length;i++){
+        //         if(d[i].style.display=="none"){
+        //             d[i].style.display="table-row"
+        //         }
+        //         else{
+        //             d[i].style.display="none"
+        //         }
+                
+        //     }
+        // }
+        // function openDiscs(id){
+        //     let d = document.getElementsByClassName(`disc-${id}`)
+        //     console.log(d)
+        //     for(let i=0;i<d.length;i++){
+        //         if(d[i].style.display=="none")
+        //         d[i].style.display="table-row"
+        //         else
+        //         d[i].style.display="none"
+        //     }
+        // }
+
+        function sortPorNota(){
+            const deptos = document.getElementsByClassName("departamento")
+
+            if(ordem==3)
+                ordem=1;
+            else
+                ordem++;
+
+            sort(deptos, "nota-depto", ordem) //ordena os departamentos
+
+            for(let i=0;i<deptos.length;i++){
+                
+                let profs = deptos[i].lastElementChild.getElementsByClassName("professores")
+                sort(profs, "nota-professor", ordem) //percorre os professores do departamento e ordena eles
+
+                for(let j=0;j<profs.length;j++){
+                    let disciplinas = profs[j].lastElementChild
+                    sort(disciplinas.children, "nota-disciplina", ordem) //percorre as disciplinas do professor e ordena elas
+                }
+            }
+        }
+
+        /*
+            bubblesort que compara cada linha de departamentos, professores e disciplinas
+            com a próxima, se for ordem crescente por exemplo, verifica se a nota da linha atual
+            é maior que a nota da linha seguinte, se for maior então troca de posição as duas,
+            depois compara essa mesma linha com a próxima e assim por diante,
+            no final vai comparar essa linha com todas as outras, e vai acomodar ela na posição certa,
+            depois repete o processo pra todas as outras linhas
+        */
+        function sort(items, classe, ordem){
+            trocar = true;
+
+            while (trocar) {
+                trocar = false;
+
+                for(let i=0; i<(items.length-1); i++){
+                    trocar = false;
+
+                    let x = items[i]
+                    let y = items[i+1];
+
+                    const ordenarX = classe == "nota-disciplina" ? x.getElementsByClassName(classe)[0] : x.firstElementChild.getElementsByClassName(classe)[0]
+                    const ordenarY = classe == "nota-disciplina" ? y.getElementsByClassName(classe)[0] : y.firstElementChild.getElementsByClassName(classe)[0]
+
+                    //ordem=1 ordem crescente de notas
+                    //ordem=2 ordem decrescente de notas
+                    //ordem=3 ordem alfabética deptos
+
+                    if(ordem==1){
+                        if(Number(ordenarX.textContent) > Number(ordenarY.textContent)){
+                            items[i].parentNode.insertBefore(items[i+1],items[i])
+                            trocar = true
+                            document.getElementById("minimal").style.backgroundImage = "linear-gradient(135deg, transparent 50%, white 50%), linear-gradient(45deg, white 50%, transparent 50%), linear-gradient(to right, #145a83, #145a83)"
+                            break;
+                        }
+                    }
+                    else if(ordem==2){
+                        if(Number(ordenarX.textContent) < Number(ordenarY.textContent)){
+                            items[i].parentNode.insertBefore(items[i+1],items[i])
+                            trocar = true
+                            document.getElementById("minimal").style.backgroundImage = "linear-gradient(45deg, transparent 50%, white 50%), linear-gradient(135deg, white 50%, transparent 50%), linear-gradient(to right, #145a83, #145a83)"
+                            break;
+                        }
+                    }
+                    else{
+                        const textoX = classe == "nota-disciplina" ? x.firstElementChild : x.firstElementChild.firstElementChild
+                        const textoY = classe == "nota-disciplina" ? y.firstElementChild : y.firstElementChild.firstElementChild
+
+                        if(textoX.textContent.toLowerCase() > textoY.textContent.toLowerCase()){
+                            items[i].parentNode.insertBefore(items[i+1],items[i])
+                            trocar = true
+                            document.getElementById("minimal").style.backgroundImage = "linear-gradient(90deg, transparent 50%, #145a83 50%), linear-gradient(90deg, #145a83 50%, transparent 50%), linear-gradient(to right, #145a83, #145a83)"
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>
