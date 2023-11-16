@@ -1,0 +1,7 @@
+-pode-se usar classe col no bootstrap pra dimensionar o tamanho da sidebar e a outra col é o conteúdo
+-nas sidebar que esconde o texto deixando só o icone no mobile, isso é feito com @media pra tirar o texto
+-botão pra abrir e fechar pode ser um checkbox que quando ativo muda o css da sidebar pra ela aparecer e quando inativo esconde, ou
+um js que é executado quando clicar no botão esconde/mostra a sidebar
+-@media pra definir tamanho no mobile e desktop
+-sidebar que fica como um menu superior no mobile, pode ser feito só com css
+-outra forma: no mobile sidebar não aparece, e tem um botão pra abrir que só aparece no mobile, quando clicado abre a sidebar pelo js com toggleClass
