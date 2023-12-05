@@ -1,0 +1,39 @@
+<div>
+    <p>conteudo</p>
+    <!-- bloqueia a tela e bota um fundo opaco-->
+    <div style="
+                        width: 100vw;
+                        height: 100vh;
+                        position: fixed;
+                        left: 0;
+                        top: 0;
+                        background: black;
+                        opacity: .2;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;"
+      ></div>
+
+    <!-- div que envolve o popup, pra impedir que o opacity: .2 do elemento acima afete tambem o popup -->
+    <div style="
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;"
+    >
+        <!-- popup -->
+        <div style="
+                background: #efefef;
+                width: 80%;
+                height: 30%;
+                border-radius: 15px;
+                padding: 10px;"
+        >
+          conteudo popup
+        </div>
+    </div>
+</div>
