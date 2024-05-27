@@ -1,0 +1,6 @@
+EM e REM tem o mesmo conceito de % mas ao invés de serem baseadas no tamanho de um elemento, essas medidas são baseadas em tamanho de fonte. 
+EM é baseado no tamanho da fonte do elemento pai e 
+REM é baseado no tamanho da fonte definido no <html>.
+
+A vantagem de usar essas medidas é que se tivermos outros elementos usando essas medidas e precisarmos mudar o tamanho de todos os elementos proporcionalmente, basta mudarmos em um lugar só. 
+Estas unidades de medida são ideais para quando o site precisa ser exibido em diferentes tamanhos de telas, onde em cada tamanho de tela a fonte deve ser exibida em escalas de tamanhos diferentes e proporcionais entre si.
